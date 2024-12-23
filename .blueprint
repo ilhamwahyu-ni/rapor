@@ -1,0 +1,33 @@
+created:
+    - database/factories/SchoolFactory.php
+    - database/factories/StudentFactory.php
+    - database/factories/KelasFactory.php
+    - database/factories/TahsinFactory.php
+    - database/factories/TahfizhFactory.php
+    - database/factories/ReportFactory.php
+    - database/migrations/2024_12_23_035053_create_schools_table.php
+    - database/migrations/2024_12_23_035054_create_students_table.php
+    - database/migrations/2024_12_23_035055_create_kelas_table.php
+    - database/migrations/2024_12_23_035056_create_tahsins_table.php
+    - database/migrations/2024_12_23_035057_create_tahfizhs_table.php
+    - database/migrations/2024_12_23_035058_create_reports_table.php
+    - app/Models/School.php
+    - app/Models/Student.php
+    - app/Models/Kelas.php
+    - app/Models/Tahsin.php
+    - app/Models/Tahfizh.php
+    - app/Models/Report.php
+    - database/seeders/SchoolSeeder.php
+    - database/seeders/StudentSeeder.php
+    - database/seeders/KelasSeeder.php
+    - database/seeders/TahsinSeeder.php
+    - database/seeders/TahfizhSeeder.php
+    - database/seeders/ReportSeeder.php
+models:
+    User: { name: string, email: string, email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL' }
+    School: { name: 'string:255', address: 'string:255', email: 'string:255:unique', academic_year: 'string:255', headmaster: 'string:255', relationships: { hasMany: 'Student, Kelas' } }
+    Student: { name: 'string:255', student_id: 'string:20:unique', gender: 'enum:male,female', relationships: { belongsTo: 'School, Kelas', hasOne: 'Tahsin, Report', hasMany: Tahfizh } }
+    Kelas: { name: 'string:255', class_teacher: 'string:255', tahfizh_teacher: 'string:255', relationships: { hasMany: Student, belongsTo: School } }
+    Tahsin: { student_id: foreignId, fluency: integer, izhar_harqi: integer, qalqalah: integer, lafaz_jalalah: integer, evaluation_date: date, note: text, score: integer, relationships: { belongsTo: Student } }
+    Tahfizh: { student_id: foreignId, surah_name: string, ayat: integer, score: integer, evaluation_date: date, note: text, relationships: { belongsTo: Student } }
+    Report: { student_id: foreignId, note: text, predicate: string, description: string, report_date: date, semester: string, relationships: { belongsTo: Student, hasOne: 'Tahsin, Tahfizh' } }

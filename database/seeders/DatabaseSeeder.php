@@ -19,5 +19,13 @@ class DatabaseSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@admin.com',
         ]);
+        #call all seeders
+        $this->call([
+            KelasSeeder::class,
+            SchoolSeeder::class,
+            StudentSeeder::class,
+            TahfizhSeeder::class,
+            TahsinSeeder::class,
+        ]);
     }
 }
