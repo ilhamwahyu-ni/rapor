@@ -21,6 +21,7 @@ class School extends Model
         'email',
         'academic_year',
         'headmaster',
+        
     ];
 
     /**

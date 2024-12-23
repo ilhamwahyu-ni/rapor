@@ -29,22 +29,29 @@ class SchoolResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('address')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('academic_year')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('headmaster')
-                    ->required()
-                    ->maxLength(255),
+                Forms\Components\Section::make('Detail Sekolah')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label('Nama Sekolah')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('address')
+                            ->label('Alamat')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('email')
+                            ->email()
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('academic_year')
+                            ->label('Tahun Ajaran')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('headmaster')
+                            ->label('Kepala Sekolah')
+                            ->required()
+                            ->maxLength(255),
+                    ])
             ]);
     }
 
@@ -53,23 +60,21 @@ class SchoolResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('address')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('academic_year')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('headmaster')
+                    ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+
             ])
             ->filters([
                 //

@@ -27,18 +27,24 @@ class KelasResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('class_teacher')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('tahfizh_teacher')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Select::make('school_id')
-                    ->relationship('school', 'name')
-                    ->required(),
+                Forms\Components\Section::make('Detail Kelas')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->label('Nama Kelas')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('class_teacher')
+                            ->label('Guru Kelas')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('tahfizh_teacher')
+                            ->label('Guru Tahfizh')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\Select::make('school_id')
+                            ->relationship('school', 'name')
+                            ->required(),
+                    ]),
             ]);
     }
 

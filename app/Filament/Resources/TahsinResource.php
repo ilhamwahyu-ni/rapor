@@ -28,29 +28,47 @@ class TahsinResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('student_id')
-                    ->relationship('student', 'name')
-                    ->required(),
-                Forms\Components\TextInput::make('fluency')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('izhar_harqi')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('qalqalah')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('lafaz_jalalah')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\DatePicker::make('evaluation_date')
-                    ->required(),
-                Forms\Components\Textarea::make('note')
-                    ->required()
-                    ->columnSpanFull(),
-                Forms\Components\TextInput::make('score')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Section::make('Detail Evaluasi Tahsin')
+                    ->schema([
+                        Forms\Components\Select::make('student_id')
+                            ->label('Siswa')
+                            ->relationship('student', 'name')
+                            ->searchable()
+                            ->preload()
+                            ->required(),
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\TextInput::make('fluency')
+                                    ->label('Kelancaran')
+                                    ->required()
+                                    ->numeric(),
+                                Forms\Components\TextInput::make('izhar_harqi')
+                                    ->label('Izhar Harqi')
+                                    ->required()
+                                    ->numeric(),
+                                Forms\Components\TextInput::make('qalqalah')
+                                    ->label('Qalqalah')
+                                    ->required()
+                                    ->numeric(),
+                                Forms\Components\TextInput::make('lafaz_jalalah')
+                                    ->label('Lafaz Jalalah')
+                                    ->required()
+                                    ->numeric(),
+                            ]),
+                        Forms\Components\TextInput::make('score')
+                            ->label('Nilai')
+                            ->required()
+                            ->numeric(),
+
+                        Forms\Components\Textarea::make('note')
+                            ->label('Catatan')
+                            ->required()
+                            ->columnSpanFull(),
+
+                        Forms\Components\DatePicker::make('evaluation_date')
+                            ->label('Tanggal Penilaian')
+                            ->required(),
+                    ]),
             ]);
     }
 
@@ -59,41 +77,41 @@ class TahsinResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('student.name')
+                    ->label('Siswa')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('fluency')
+                    ->label('Kelancaran')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('izhar_harqi')
+                    ->label('Izhar Harqi')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('qalqalah')
+                    ->label('Qalqalah')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('lafaz_jalalah')
+                    ->label('Lafaz Jalalah')
+                    ->numeric()
+                    ->sortable(),
+
+                Tables\Columns\TextColumn::make('score')
+                    ->label('Nilai')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('evaluation_date')
+                    ->label('Tanggal Penilaian')
                     ->date()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('score')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-            Tables\Actions\DeleteAction::make()
+                Tables\Actions\DeleteAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
