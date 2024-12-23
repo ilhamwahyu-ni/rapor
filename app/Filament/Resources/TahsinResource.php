@@ -17,8 +17,13 @@ class TahsinResource extends Resource
 {
     protected static ?string $model = Tahsin::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-rocket-launch';
 
+    //add navigationgroups
+    protected static ?string $navigationGroup = 'Nilai';
+
+    //add navigation sort order
+    protected static ?int $navigationSort = 1;
     public static function form(Form $form): Form
     {
         return $form

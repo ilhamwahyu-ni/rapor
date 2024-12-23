@@ -17,8 +17,13 @@ class TahfizhResource extends Resource
 {
     protected static ?string $model = Tahfizh::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-square-3-stack-3d';
 
+    //add navigationgroups
+    protected static ?string $navigationGroup = 'Nilai';
+
+    //add navigation sort order
+    protected static ?int $navigationSort = 2;
     public static function form(Form $form): Form
     {
         return $form
@@ -75,7 +80,7 @@ class TahfizhResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-            Tables\Actions\DeleteAction::make()
+                Tables\Actions\DeleteAction::make()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
