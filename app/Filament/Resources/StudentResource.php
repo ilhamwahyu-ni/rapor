@@ -50,10 +50,10 @@ class StudentResource extends Resource
                             ->label('Kelas'),
 
                         //add a school id field
-                        Forms\Components\Select::make('school_id')
-                            ->relationship('school', 'name')
-                            ->required()
-                            ->label('Sekolah'),
+                        // Forms\Components\Select::make('school_id')
+                        //     ->relationship('school', 'name')
+                        //     ->required()
+                        //     ->label('Sekolah'),
                     ]),
             ]);
     }

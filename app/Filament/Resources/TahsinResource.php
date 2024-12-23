@@ -55,10 +55,11 @@ class TahsinResource extends Resource
                                     ->required()
                                     ->numeric(),
                             ]),
-                        Forms\Components\TextInput::make('score')
-                            ->label('Nilai')
-                            ->required()
-                            ->numeric(),
+                        // aoutomaticali fill score
+                        // Forms\Components\TextInput::make('score')
+                        //     ->label('Nilai')
+                        //     ->required()
+                        //     ->numeric(),
 
                         Forms\Components\Textarea::make('note')
                             ->label('Catatan')
@@ -105,6 +106,8 @@ class TahsinResource extends Resource
                     ->label('Nilai')
                     ->numeric()
                     ->sortable(),
+
+
                 Tables\Columns\TextColumn::make('evaluation_date')
                     ->label('Tanggal Penilaian')
                     ->date()

@@ -41,9 +41,9 @@ class KelasResource extends Resource
                             ->label('Guru Tahfizh')
                             ->required()
                             ->maxLength(255),
-                        Forms\Components\Select::make('school_id')
-                            ->relationship('school', 'name')
-                            ->required(),
+                        // Forms\Components\Select::make('school_id')
+                        //     ->relationship('school', 'name')
+                        //     ->required(),
                     ]),
             ]);
     }
@@ -61,9 +61,9 @@ class KelasResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('tahfizh_teacher')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('school.name')
-                    ->numeric()
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('school.name')
+                //     ->numeric()
+                //     ->sortable(),
 
             ])
             ->filters([

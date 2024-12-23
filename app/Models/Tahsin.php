@@ -16,7 +16,6 @@ class Tahsin extends Model
      * @var array
      */
     protected $fillable = [
-        'student_id',
         'fluency',
         'izhar_harqi',
         'qalqalah',
@@ -24,6 +23,7 @@ class Tahsin extends Model
         'evaluation_date',
         'note',
         'score',
+        'student_id',
     ];
 
     /**
@@ -33,9 +33,23 @@ class Tahsin extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'student_id' => 'integer',
+        'fluency' => 'integer',
+        'izhar_harqi' => 'integer',
+        'qalqalah' => 'integer',
+        'lafaz_jalalah' => 'integer',
         'evaluation_date' => 'date',
+        'score' => 'integer',
+        'student_id' => 'integer',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($tahsin) {
+            $tahsin->score = ($tahsin->fluency + $tahsin->izhar_harqi + $tahsin->qalqalah + $tahsin->lafaz_jalalah) / 4;
+        });
+    }
 
     public function student(): BelongsTo
     {

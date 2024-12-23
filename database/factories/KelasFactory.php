@@ -25,7 +25,7 @@ class KelasFactory extends Factory
             'name' => $this->faker->name(),
             'class_teacher' => $this->faker->name(),
             'tahfizh_teacher' => $this->faker->name(),
-            'school_id' => School::factory(),
+            // 'school_id' => School::factory(),
         ];
     }
 }

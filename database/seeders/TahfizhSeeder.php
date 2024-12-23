@@ -12,6 +12,6 @@ class TahfizhSeeder extends Seeder
      */
     public function run(): void
     {
-        Tahfizh::factory()->count(5)->create();
+        Tahfizh::factory()->count(30)->create();
     }
 }

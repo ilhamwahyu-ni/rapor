@@ -20,7 +20,7 @@ class Kelas extends Model
         'name',
         'class_teacher',
         'tahfizh_teacher',
-        'school_id',
+        // 'school_id',
     ];
 
     /**
@@ -30,7 +30,7 @@ class Kelas extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'school_id' => 'integer',
+        // 'school_id' => 'integer',
     ];
 
     public function students(): HasMany
@@ -38,8 +38,8 @@ class Kelas extends Model
         return $this->hasMany(Student::class);
     }
 
-    public function school(): BelongsTo
-    {
-        return $this->belongsTo(School::class);
-    }
+    // public function school(): BelongsTo
+    // {
+    //     return $this->belongsTo(School::class);
+    // }
 }

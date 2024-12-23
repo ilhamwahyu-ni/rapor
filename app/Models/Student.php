@@ -21,7 +21,7 @@ class Student extends Model
         'name',
         'student_id',
         'gender',
-        'school_id',
+        // 'school_id',
         'kelas_id',
     ];
 
@@ -32,14 +32,14 @@ class Student extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'school_id' => 'integer',
+        // 'school_id' => 'integer',
         'kelas_id' => 'integer',
     ];
 
-    public function school(): BelongsTo
-    {
-        return $this->belongsTo(School::class);
-    }
+    // public function school(): BelongsTo
+    // {
+    //     return $this->belongsTo(School::class);
+    // }
 
     public function kelas(): BelongsTo
     {
