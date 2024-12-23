@@ -26,7 +26,7 @@ created:
 models:
     User: { name: string, email: string, email_verified_at: 'timestamp nullable default:NULL', password: string, remember_token: 'string:100 nullable default:NULL' }
     School: { name: 'string:255', address: 'string:255', email: 'string:255:unique', academic_year: 'string:255', headmaster: 'string:255', relationships: { hasMany: 'Student, Kelas' } }
-    Student: { name: 'string:255', student_id: 'string:20:unique', gender: 'enum:male,female', relationships: { belongsTo: 'School, Kelas', hasOne: 'Tahsin, Report', hasMany: Tahfizh } }
+    Student: { name: 'string:255', student_id: 'string:20:unique', gender: 'enum:laki-laki,perempuan', relationships: { belongsTo: 'School, Kelas', hasOne: 'Tahsin, Report', hasMany: Tahfizh } }
     Kelas: { name: 'string:255', class_teacher: 'string:255', tahfizh_teacher: 'string:255', relationships: { hasMany: Student, belongsTo: School } }
     Tahsin: { student_id: foreignId, fluency: integer, izhar_harqi: integer, qalqalah: integer, lafaz_jalalah: integer, evaluation_date: date, note: text, score: integer, relationships: { belongsTo: Student } }
     Tahfizh: { student_id: foreignId, surah_name: string, ayat: integer, score: integer, evaluation_date: date, note: text, relationships: { belongsTo: Student } }

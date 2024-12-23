@@ -11,7 +11,7 @@ models:
   Student:
     name: string:255
     student_id: string:20:unique
-    gender: enum:male,female
+    gender: enum:laki-laki,perempuan
     relationships:
       belongsTo: School, Kelas
       hasOne: Tahsin, Report

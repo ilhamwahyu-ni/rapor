@@ -25,7 +25,7 @@ class StudentFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'student_id' => $this->faker->regexify('[A-Za-z0-9]{20}'),
-            'gender' => $this->faker->randomElement(["male","female"]),
+            'gender' => $this->faker->randomElement(["laki-laki", "Perempuan"]),
             'school_id' => School::factory(),
             'kelas_id' => Kelas::factory(),
         ];

@@ -12,6 +12,6 @@ class TahsinSeeder extends Seeder
      */
     public function run(): void
     {
-        Tahsin::factory()->count(5)->create();
+        Tahsin::factory()->count(30)->create();
     }
 }

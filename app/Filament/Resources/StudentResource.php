@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\KelasResource\Pages;
-use App\Filament\Resources\KelasResource\RelationManagers;
-use App\Models\Kelas;
+use App\Filament\Resources\StudentResource\Pages;
+use App\Filament\Resources\StudentResource\RelationManagers;
+use App\Models\Student;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,37 +13,47 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class KelasResource extends Resource
+class StudentResource extends Resource
 {
-    protected static ?string $model = Kelas::class;
+    protected static ?string $model = Student::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationIcon = 'heroicon-o-user';
 
     protected static ?string $navigationGroup = 'Identitas';
 
-    protected static ?int $navigationSort = 2;
+    protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Section::make('Detail Kelas')
+                Forms\Components\Section::make('Detail')
                     ->schema([
                         Forms\Components\TextInput::make('name')
-                            ->label('Nama Kelas')
+                            ->label('Nama')
                             ->required()
                             ->maxLength(255),
-                        Forms\Components\TextInput::make('class_teacher')
-                            ->label('Guru Kelas')
+                        Forms\Components\TextInput::make('student_id')
+                            ->label('NIS')
                             ->required()
-                            ->maxLength(255),
-                        Forms\Components\TextInput::make('tahfizh_teacher')
-                            ->label('Guru Tahfizh')
+                            ->maxLength(20),
+                        Forms\Components\Select::make('gender')
+                            ->label('Jenis Kelamin')
                             ->required()
-                            ->maxLength(255),
+                            ->options([
+                                'laki-laki' => 'Laki-Laki',
+                                'perempuan' => 'Perempuan',
+                            ]),
+                        Forms\Components\Select::make('kelas_id')
+                            ->relationship('kelas', 'name')
+                            ->required()
+                            ->label('Kelas'),
+
+                        //add a school id field
                         Forms\Components\Select::make('school_id')
                             ->relationship('school', 'name')
-                            ->required(),
+                            ->required()
+                            ->label('Sekolah'),
                     ]),
             ]);
     }
@@ -57,11 +67,10 @@ class KelasResource extends Resource
                     ->rowIndex(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('class_teacher')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('tahfizh_teacher')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('school.name')
+
+                Tables\Columns\TextColumn::make('gender'),
+
+                Tables\Columns\TextColumn::make('kelas.name')
                     ->numeric()
                     ->sortable(),
 
@@ -90,9 +99,9 @@ class KelasResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListKelas::route('/'),
-            'create' => Pages\CreateKelas::route('/create'),
-            'edit' => Pages\EditKelas::route('/{record}/edit'),
+            'index' => Pages\ListStudents::route('/'),
+            'create' => Pages\CreateStudent::route('/create'),
+            'edit' => Pages\EditStudent::route('/{record}/edit'),
         ];
     }
 }

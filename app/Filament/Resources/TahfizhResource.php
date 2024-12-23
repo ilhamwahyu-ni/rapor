@@ -52,6 +52,9 @@ class TahfizhResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('index')
+                    ->label('No')
+                    ->rowIndex(),
                 Tables\Columns\TextColumn::make('student.name')
                     ->numeric()
                     ->sortable(),

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 255);
             $table->string('student_id', 20);
-            $table->enum('gender', ["male","female"]);
+            $table->enum('gender', ["laki-laki","perempuan"]);
             $table->foreignId('school_id');
             $table->foreignId('kelas_id');
             $table->timestamps();
