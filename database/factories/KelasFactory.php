@@ -23,8 +23,8 @@ class KelasFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'class_teacher' => $this->faker->regexify('[A-Za-z0-9]{255}'),
-            'tahfizh_teacher' => $this->faker->regexify('[A-Za-z0-9]{255}'),
+            'class_teacher' => $this->faker->name(),
+            'tahfizh_teacher' => $this->faker->name(),
             'school_id' => School::factory(),
         ];
     }

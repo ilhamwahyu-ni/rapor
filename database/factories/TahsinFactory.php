@@ -23,13 +23,13 @@ class TahsinFactory extends Factory
     {
         return [
             'student_id' => Student::factory(),
-            'fluency' => $this->faker->numberBetween(-10000, 10000),
-            'izhar_harqi' => $this->faker->numberBetween(-10000, 10000),
-            'qalqalah' => $this->faker->numberBetween(-10000, 10000),
-            'lafaz_jalalah' => $this->faker->numberBetween(-10000, 10000),
+            'fluency' => $this->faker->numberBetween(75, 100),
+            'izhar_harqi' => $this->faker->numberBetween(75, 100),
+            'qalqalah' => $this->faker->numberBetween(75, 100),
+            'lafaz_jalalah' => $this->faker->numberBetween(75, 100),
             'evaluation_date' => $this->faker->date(),
             'note' => $this->faker->text(),
-            'score' => $this->faker->numberBetween(-10000, 10000),
+            'score' => $this->faker->numberBetween(75, 100),
         ];
     }
 }

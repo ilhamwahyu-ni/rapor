@@ -23,9 +23,9 @@ class TahfizhFactory extends Factory
     {
         return [
             'student_id' => Student::factory(),
-            'surah_name' => $this->faker->word(),
-            'ayat' => $this->faker->numberBetween(-10000, 10000),
-            'score' => $this->faker->numberBetween(-10000, 10000),
+            'surah_name' => $this->faker->title(),
+            'ayat' => $this->faker->numberBetween(75, 100),
+            'score' => $this->faker->numberBetween(75, 100),
             'evaluation_date' => $this->faker->date(),
             'note' => $this->faker->text(),
         ];

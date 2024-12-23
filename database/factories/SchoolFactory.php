@@ -22,10 +22,10 @@ class SchoolFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'address' => $this->faker->regexify('[A-Za-z0-9]{255}'),
+            'address' => $this->faker->address(),
             'email' => $this->faker->safeEmail(),
-            'academic_year' => $this->faker->regexify('[A-Za-z0-9]{255}'),
-            'headmaster' => $this->faker->regexify('[A-Za-z0-9]{255}'),
+            'academic_year' => $this->faker->year(),
+            'headmaster' => $this->faker->name(),
         ];
     }
 }
