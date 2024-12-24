@@ -43,11 +43,11 @@ class Report extends Model
 
     public function tahsin(): HasOne
     {
-        return $this->hasOne(Tahsin::class);
+        return $this->hasOne(Tahsin::class, 'student_id', 'student_id');
     }
 
     public function tahfizh(): HasOne
     {
-        return $this->hasOne(Tahfizh::class);
+        return $this->hasOne(Tahfizh::class, 'student_id', 'student_id');
     }
 }

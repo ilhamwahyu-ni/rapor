@@ -58,15 +58,19 @@ class ReportResource extends Resource
                 Tables\Columns\TextColumn::make('student.name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('predicate')
-                    ->searchable(),
+                Tables\Columns\TextColumn::make('tahsin.score'),
                 Tables\Columns\TextColumn::make('description')
+                    ->wrap()
                     ->searchable(),
+                Tables\Columns\TextColumn::make('predicate')
+                    ->wrap(),
                 Tables\Columns\TextColumn::make('report_date')
                     ->date()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('semester')
+                    ->wrap()
                     ->searchable(),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
