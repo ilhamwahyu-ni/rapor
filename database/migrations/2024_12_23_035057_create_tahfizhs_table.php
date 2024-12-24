@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('tahfizhs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id');
+            $table->foreignId('student_id')->constrained()->onDelete('cascade');
             $table->string('surah_name');
             $table->integer('ayat');
             $table->integer('score');
             $table->date('evaluation_date');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

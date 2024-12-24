@@ -30,12 +30,7 @@ class TahsinResource extends Resource
             ->schema([
                 Forms\Components\Section::make('Detail Evaluasi Tahsin')
                     ->schema([
-                        Forms\Components\Select::make('student_id')
-                            ->label('Siswa')
-                            ->relationship('student', 'name')
-                            ->searchable()
-                            ->preload()
-                            ->required(),
+
                         Forms\Components\Grid::make(2)
                             ->schema([
                                 Forms\Components\TextInput::make('fluency')
@@ -77,14 +72,14 @@ class TahsinResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('index')
-                    ->label('No')
-                    ->rowIndex(),
+                // Tables\Columns\TextColumn::make('index')
+                //     ->label('No')
+                //     ->rowIndex(),
 
-                Tables\Columns\TextColumn::make('student.name')
-                    ->label('Siswa')
-                    ->numeric()
-                    ->sortable(),
+                // Tables\Columns\TextColumn::make('student.name')
+                //     ->label('Siswa')
+                //     ->numeric()
+                //     ->sortable(),
                 Tables\Columns\TextColumn::make('fluency')
                     ->label('Kelancaran')
                     ->numeric()

@@ -16,12 +16,11 @@ class Tahfizh extends Model
      * @var array
      */
     protected $fillable = [
-        'student_id',
         'surah_name',
-        'ayat',
         'score',
         'evaluation_date',
         'note',
+
     ];
 
     /**
@@ -31,8 +30,9 @@ class Tahfizh extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'student_id' => 'integer',
+        'score' => 'integer',
         'evaluation_date' => 'date',
+
     ];
 
     public function student(): BelongsTo

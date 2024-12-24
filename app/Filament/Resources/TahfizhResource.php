@@ -6,6 +6,7 @@ use App\Filament\Resources\TahfizhResource\Pages;
 use App\Filament\Resources\TahfizhResource\RelationManagers;
 use App\Models\Tahfizh;
 use Filament\Forms;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -28,23 +29,26 @@ class TahfizhResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('student_id')
-                    ->relationship('student', 'name')
-                    ->required(),
-                Forms\Components\TextInput::make('surah_name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('ayat')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('score')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\DatePicker::make('evaluation_date')
-                    ->required(),
-                Forms\Components\Textarea::make('note')
-                    ->required()
-                    ->columnSpanFull(),
+                Section::make('Tahfizh')
+                    ->schema([
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\TextInput::make('surah_name')
+                                    ->required()
+                                    ->maxLength(255),
+                                Forms\Components\TextInput::make('ayat')
+                                    ->required()
+                                    ->numeric(),
+                            ]),
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\TextInput::make('score')
+                                    ->required()
+                                    ->numeric(),
+                                Forms\Components\DatePicker::make('evaluation_date')
+                                    ->required(),
+                            ]),
+                    ]),
             ]);
     }
 
@@ -52,19 +56,11 @@ class TahfizhResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('index')
-                    ->label('No')
-                    ->rowIndex(),
-                Tables\Columns\TextColumn::make('student.name')
-                    ->numeric()
-                    ->sortable(),
+
                 Tables\Columns\TextColumn::make('surah_name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('ayat')
-                    ->numeric()
                     ->sortable(),
+
                 Tables\Columns\TextColumn::make('score')
-                    ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('evaluation_date')
                     ->date()
@@ -81,7 +77,7 @@ class TahfizhResource extends Resource
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                ])
             ]);
     }
 
