@@ -6,6 +6,8 @@ use App\Filament\Resources\StudentResource\Pages;
 use App\Filament\Resources\StudentResource\RelationManagers;
 use App\Models\Student;
 use Filament\Forms;
+use Filament\Forms\Components\Fieldset;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -54,7 +56,62 @@ class StudentResource extends Resource
                             ->relationship('school', 'name')
                             ->required()
                             ->label('Sekolah'),
+
+
                     ]),
+                Fieldset::make('Tahsin')
+                    ->schema([
+                        Forms\Components\Grid::make(2)
+                            ->schema([
+                                Forms\Components\TextInput::make('fluency')
+                                    ->label('Kelancaran')
+                                    ->required()
+                                    ->numeric(),
+                                Forms\Components\TextInput::make('izhar_harqi')
+                                    ->label('Izhar Harqi')
+                                    ->required()
+                                    ->numeric(),
+                                Forms\Components\TextInput::make('qalqalah')
+                                    ->label('Qalqalah')
+                                    ->required()
+                                    ->numeric(),
+                                Forms\Components\TextInput::make('lafaz_jalalah')
+                                    ->label('Lafaz Jalalah')
+                                    ->required()
+                                    ->numeric(),
+                                Forms\Components\TextInput::make('score')
+                                    ->label('Nilai')
+                                    ->required()
+                                    ->numeric(),
+
+                                Forms\Components\Textarea::make('note')
+                                    ->label('Catatan')
+                                    ->required()
+                                    ->columnSpanFull(),
+
+                                Forms\Components\DatePicker::make('evaluation_date')
+                                    ->label('Tanggal Penilaian')
+                                    ->required(),
+                            ]),
+
+                    ]),
+                Repeater::make('Tahfizh')
+                    ->schema([
+                        Forms\Components\TextInput::make('surah_name')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('ayat')
+                            ->required()
+                            ->numeric(),
+                        Forms\Components\TextInput::make('score')
+                            ->required()
+                            ->numeric(),
+                        Forms\Components\DatePicker::make('evaluation_date')
+                            ->required(),
+                        Forms\Components\Textarea::make('note')
+                            ->required()
+                            ->columnSpanFull(),
+                    ])->columnSpanFull(),
             ]);
     }
 
