@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             StudentSeeder::class,
             TahfizhSeeder::class,
             TahsinSeeder::class,
+            ReportSeeder::class,
         ]);
     }
 }
