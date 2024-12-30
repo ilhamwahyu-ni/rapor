@@ -60,6 +60,7 @@ class StudentResource extends Resource
 
                     ]),
                 Fieldset::make('Tahsin')
+                    ->relationship('tahsin')
                     ->schema([
                         Forms\Components\Grid::make(2)
                             ->schema([
@@ -96,6 +97,7 @@ class StudentResource extends Resource
 
                     ]),
                 Repeater::make('Tahfizh')
+                ->relationship('tahfizhs')
                     ->schema([
                         Forms\Components\TextInput::make('surah_name')
                             ->required()
