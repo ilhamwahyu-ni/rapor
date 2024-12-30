@@ -17,8 +17,13 @@ class RaporSummaryResource extends Resource
 {
     protected static ?string $model = RaporSummary::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-book-open';
 
+    //add navigationgroups
+    protected static ?string $navigationGroup = 'Nilai';
+
+    //add navigation sort order
+    protected static ?int $navigationSort = 3;
     public static function form(Form $form): Form
     {
         return $form

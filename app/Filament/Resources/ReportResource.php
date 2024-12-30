@@ -18,12 +18,14 @@ class ReportResource extends Resource
     protected static ?string $model = Report::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-book-open';
-
+   
+    protected static bool $shouldRegisterNavigation = false;
     //add navigationgroups
     protected static ?string $navigationGroup = 'Nilai';
 
     //add navigation sort order
     protected static ?int $navigationSort = 3;
+
     public static function form(Form $form): Form
     {
         return $form
